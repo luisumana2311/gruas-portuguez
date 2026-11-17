@@ -10,6 +10,7 @@ export default function Galeria() {
   const ultimoBoton = useRef(null)
   const cerrarRef = useRef(null)
   const toqueX = useRef(null)
+  const dialogo = useRef(null)
   const abierta = idx !== null
 
   const ir = useCallback((d) => setIdx((i) => (i === null ? i : (i + d + galeria.length) % galeria.length)), [])
@@ -24,6 +25,16 @@ export default function Galeria() {
       if (e.key === 'Escape') cerrar()
       else if (e.key === 'ArrowLeft') ir(-1)
       else if (e.key === 'ArrowRight') ir(1)
+      else if (e.key === 'Tab') {
+        // Mantiene el foco dentro del visor mientras está abierto
+        const focos = [...(dialogo.current?.querySelectorAll('button') ?? [])]
+        if (!focos.length) return
+        const primero = focos[0]
+        const ultimo = focos[focos.length - 1]
+        if (e.shiftKey && document.activeElement === primero) { e.preventDefault(); ultimo.focus() }
+        else if (!e.shiftKey && document.activeElement === ultimo) { e.preventDefault(); primero.focus() }
+        else if (!dialogo.current?.contains(document.activeElement)) { e.preventDefault(); primero.focus() }
+      }
     }
     window.addEventListener('keydown', alTeclear)
     const previo = document.body.style.overflow
@@ -55,6 +66,7 @@ export default function Galeria() {
           {galeria.map((g, i) => (
             <li key={g.id} className={`reveal ${i === 0 ? 'col-span-2 lg:col-span-1' : ''}`} style={{ '--d': `${(i % 3) * 80}ms` }}>
               <button
+                type="button"
                 onClick={(e) => { ultimoBoton.current = e.currentTarget; setIdx(i) }}
                 className="group relative block w-full overflow-hidden rounded-lg"
                 aria-label={`Ampliar: ${g.titulo}`}
@@ -75,6 +87,7 @@ export default function Galeria() {
 
       {f && (
         <div
+          ref={dialogo}
           className="aparecer fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/95 p-3"
           role="dialog" aria-modal="true" aria-label={`Foto ${idx + 1} de ${galeria.length}: ${f.titulo}`}
           onClick={cerrar}
@@ -86,13 +99,13 @@ export default function Galeria() {
             if (Math.abs(dx) > 50) ir(dx < 0 ? 1 : -1)
           }}
         >
-          <button ref={cerrarRef} className="absolute right-3 top-3 z-10 grid h-14 w-14 place-items-center rounded-full bg-white text-black" aria-label="Cerrar" onClick={(e) => { e.stopPropagation(); cerrar() }}>
+          <button type="button" ref={cerrarRef} className="absolute right-3 top-3 z-10 grid h-14 w-14 place-items-center rounded-full bg-white text-black" aria-label="Cerrar" onClick={(e) => { e.stopPropagation(); cerrar() }}>
             <IconoCerrar />
           </button>
-          <button className="absolute left-2 top-1/2 z-10 grid h-14 w-14 -translate-y-1/2 place-items-center rounded-full bg-white/90 text-black" aria-label="Foto anterior" onClick={(e) => { e.stopPropagation(); ir(-1) }}>
+          <button type="button" className="absolute left-2 top-1/2 z-10 grid h-14 w-14 -translate-y-1/2 place-items-center rounded-full bg-white/90 text-black" aria-label="Foto anterior" onClick={(e) => { e.stopPropagation(); ir(-1) }}>
             <IconoIzq />
           </button>
-          <button className="absolute right-2 top-1/2 z-10 grid h-14 w-14 -translate-y-1/2 place-items-center rounded-full bg-white/90 text-black" aria-label="Foto siguiente" onClick={(e) => { e.stopPropagation(); ir(1) }}>
+          <button type="button" className="absolute right-2 top-1/2 z-10 grid h-14 w-14 -translate-y-1/2 place-items-center rounded-full bg-white/90 text-black" aria-label="Foto siguiente" onClick={(e) => { e.stopPropagation(); ir(1) }}>
             <IconoDer />
           </button>
           <figure className="max-h-[90vh] max-w-full" onClick={(e) => e.stopPropagation()}>

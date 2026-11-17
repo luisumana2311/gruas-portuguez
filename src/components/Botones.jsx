@@ -1,22 +1,23 @@
 import { useState } from 'react'
 import { sitio } from '../data/sitio'
 import { IconoLlamar, IconoWhats, IconoUbicacion } from './Icons'
+import { registrar } from '../medicion'
 
 export const urlWhatsapp = (mensaje = sitio.whatsappMensaje) =>
   `https://wa.me/${sitio.whatsapp}?text=${encodeURIComponent(mensaje)}`
 
-export function BotonLlamar({ className = '', texto, pulso = false }) {
+export function BotonLlamar({ className = '', texto, pulso = false, origen }) {
   return (
-    <a href={`tel:${sitio.telefonoLink}`} className={`btn btn-llamar ${pulso ? 'btn-pulso' : ''} ${className}`}>
+    <a href={`tel:${sitio.telefonoLink}`} onClick={() => registrar('llamar', { origen })} className={`btn btn-llamar ${pulso ? 'btn-pulso' : ''} ${className}`}>
       <IconoLlamar />
       {texto || `Llamar ${sitio.telefono}`}
     </a>
   )
 }
 
-export function BotonWhatsapp({ className = '', texto = 'Escribir por WhatsApp', mensaje }) {
+export function BotonWhatsapp({ className = '', texto = 'Escribir por WhatsApp', mensaje, origen }) {
   return (
-    <a href={urlWhatsapp(mensaje)} target="_blank" rel="noopener noreferrer" className={`btn btn-whats ${className}`}>
+    <a href={urlWhatsapp(mensaje)} target="_blank" rel="noopener noreferrer" onClick={() => registrar('whatsapp', { origen })} className={`btn btn-whats ${className}`}>
       <IconoWhats />
       {texto}
     </a>
@@ -35,6 +36,7 @@ export function BotonUbicacion({ className = '', variante = 'boton', texto = 'En
   }
 
   const enviar = () => {
+    registrar('ubicacion')
     if (!navigator.geolocation) {
       setEstado('error')
       abrir(sitio.whatsappMensaje)

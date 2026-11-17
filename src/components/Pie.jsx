@@ -1,5 +1,6 @@
 import Logo from './Logo'
 import { sitio } from '../data/sitio'
+import { registrar } from '../medicion'
 
 export default function Pie() {
   return (
@@ -12,11 +13,11 @@ export default function Pie() {
             <p className="mt-2 text-cabina-200">{sitio.base}</p>
           </div>
           <div className="text-lg text-cabina-200">
-            <p>Tel. / WhatsApp: <a className="font-bold text-white underline underline-offset-4" href={`tel:${sitio.telefonoLink}`}>{sitio.telefono}</a></p>
+            <p>Tel. / WhatsApp: <a className="font-bold text-white underline underline-offset-4" href={`tel:${sitio.telefonoLink}`} onClick={() => registrar('llamar', { origen: 'pie' })}>{sitio.telefono}</a></p>
             <p>{sitio.horario}</p>
           </div>
         </div>
-        <p className="contenedor mt-8 text-sm text-cabina-500">© {new Date().getFullYear()} Grúas Portuguez S.R.L. Todos los derechos reservados.</p>
+        <p className="contenedor mt-8 text-sm text-cabina-500">© <span suppressHydrationWarning>{new Date().getFullYear()}</span> {sitio.nombre}. Todos los derechos reservados.</p>
       </div>
     </footer>
   )

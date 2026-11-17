@@ -37,15 +37,3 @@ export const IconoDer = (p) => (
 export const IconoUbicacion = (p) => (
   <svg {...base} {...p}><circle cx="12" cy="12" r="3" /><circle cx="12" cy="12" r="8" /><path d="M12 2v3M12 19v3M2 12h3M19 12h3" /></svg>
 )
-
-const servicioPaths = {
-  grua: <><path d="M3 17h13l2-4h3v4" /><circle cx="7" cy="18" r="2" /><circle cx="17" cy="18" r="2" /><path d="M5 13 10 5l3 1.5M10 5v6" /></>,
-  llanta: <><circle cx="12" cy="12" r="8" /><circle cx="12" cy="12" r="3" /><path d="M12 4v5M12 15v5M4 12h5M15 12h5" /></>,
-  rescate: <><path d="M12 3v12" /><path d="m7 10 5 5 5-5" /><path d="M4 20h16" /></>,
-  moto: <><circle cx="6" cy="16" r="3" /><circle cx="18" cy="16" r="3" /><path d="M6 16l4-7h4l4 7M10 9 9 6H7" /></>,
-  ruta: <><path d="M5 20 9 4M19 20 15 4M12 6v2M12 11v2M12 16v2" /></>,
-  noche: <><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z" /></>,
-}
-export const IconoServicio = ({ nombre, ...p }) => (
-  <svg {...base} {...p}>{servicioPaths[nombre] || servicioPaths.grua}</svg>
-)

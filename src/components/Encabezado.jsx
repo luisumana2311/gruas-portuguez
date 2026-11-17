@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Logo from './Logo'
 import { sitio } from '../data/sitio'
 import { IconoMenu, IconoCerrar, IconoLlamar } from './Icons'
 import { useScrollPasado, useSeccionActiva } from '../hooks'
+import { registrar } from '../medicion'
 
 const enlaces = [
   ['Servicios', '#servicios'],
@@ -15,12 +16,17 @@ const ids = ['inicio', ...enlaces.map(([, h]) => h.slice(1))]
 
 export default function Encabezado() {
   const [abierto, setAbierto] = useState(false)
+  const botonMenu = useRef(null)
   const activa = useSeccionActiva(ids)
   const bajado = useScrollPasado(8)
 
   useEffect(() => {
     if (!abierto) return
-    const alTeclear = (e) => e.key === 'Escape' && setAbierto(false)
+    const alTeclear = (e) => {
+      if (e.key !== 'Escape') return
+      setAbierto(false)
+      botonMenu.current?.focus()
+    }
     window.addEventListener('keydown', alTeclear)
     return () => window.removeEventListener('keydown', alTeclear)
   }, [abierto])
@@ -46,12 +52,14 @@ export default function Encabezado() {
               </a>
             )
           })}
-          <a href={`tel:${sitio.telefonoLink}`} className="btn btn-llamar !min-h-0 !px-4 !py-2 !text-lg">
+          <a href={`tel:${sitio.telefonoLink}`} onClick={() => registrar('llamar', { origen: 'encabezado' })} className="btn btn-llamar !min-h-0 !px-4 !py-2 !text-lg">
             <IconoLlamar width={20} height={20} /> {sitio.telefono}
           </a>
         </nav>
 
         <button
+          type="button"
+          ref={botonMenu}
           className="grid h-12 w-12 place-items-center rounded-lg bg-papel text-cabina-900 md:hidden"
           onClick={() => setAbierto(!abierto)}
           aria-expanded={abierto}

@@ -17,7 +17,7 @@ export default function Cobertura() {
         </ul>
         <p className="mt-6 text-lg text-cabina-200">¿Otra zona? También hacemos traslados a cualquier parte del país. Consúltenos.</p>
         <div className="mt-6 sm:max-w-sm">
-          <BotonLlamar className="w-full" />
+          <BotonLlamar origen="cobertura" className="w-full" />
         </div>
       </div>
     </section>

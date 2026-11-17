@@ -4,6 +4,7 @@ import Servicios from './components/Servicios'
 import Cobertura from './components/Cobertura'
 import Galeria from './components/Galeria'
 import Nosotros from './components/Nosotros'
+import Preguntas from './components/Preguntas'
 import Contacto from './components/Contacto'
 import Pie from './components/Pie'
 import BarraFija from './components/BarraFija'
@@ -24,6 +25,7 @@ export default function App() {
         <Cobertura />
         <Galeria />
         <Nosotros />
+        <Preguntas />
         <Contacto />
       </main>
       <Pie />

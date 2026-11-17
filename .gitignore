@@ -2,5 +2,6 @@
 .env.local
 _to_delete
 dist
+dist-ssr
 node_modules
 vite.config.js.timestamp-*

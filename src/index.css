@@ -16,9 +16,9 @@ h1, h2, h3 { @apply font-titulo uppercase tracking-wide; }
   .btn:active { transform: scale(.97); box-shadow: none; }
   .btn-llamar { @apply bg-reflectivo text-white; }
   .btn-whats { @apply bg-whats text-cabina-950; }
-  .btn-contorno { @apply border-2 border-cabina-900 bg-transparent text-cabina-900 shadow-none; }
+  .btn-contorno { @apply whitespace-normal text-center border-2 border-cabina-900 bg-transparent text-cabina-900 shadow-none; }
   .btn-pulso { animation: pulso 2.4s ease-out 1.2s 3; }
-  .enlace-accion { @apply inline-flex min-h-[2.75rem] items-center gap-2 text-lg font-semibold text-cabina-800 underline decoration-reflectivo decoration-2 underline-offset-4; }
+  .enlace-accion { @apply inline-flex min-h-[2.75rem] items-center gap-2 text-left text-lg font-semibold text-cabina-800 underline decoration-reflectivo decoration-2 underline-offset-4; }
   .seccion { @apply px-4 py-14 sm:py-20; }
   .contenedor { @apply mx-auto w-full max-w-6xl; }
   .titulo-seccion { @apply text-4xl sm:text-5xl font-extrabold leading-none text-cabina-900; }

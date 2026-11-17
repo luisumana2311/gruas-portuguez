@@ -17,9 +17,9 @@ export default function Portada() {
             Grúa de plataforma con base en Santiago de Cervantes. Vehículos, maquinaria, contenedores y cargas, a cualquier hora.
           </p>
 
-          <div className="mt-6 flex flex-col gap-3 sm:max-w-md">
-            <BotonLlamar pulso className="!text-2xl !min-h-[4.25rem]" />
-            <BotonWhatsapp className="!text-2xl !min-h-[4.25rem]" texto="WhatsApp" />
+          <div id="cta-portada" className="mt-6 flex flex-col gap-3 sm:max-w-md">
+            <BotonLlamar origen="portada" pulso className="!text-2xl !min-h-[4.25rem]" />
+            <BotonWhatsapp origen="portada" className="!text-2xl !min-h-[4.25rem]" texto="WhatsApp" />
             <BotonUbicacion variante="enlace" texto="¿Varado? Envíe su ubicación por WhatsApp" className="mt-1" />
           </div>
 

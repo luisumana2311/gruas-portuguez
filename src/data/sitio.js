@@ -9,10 +9,17 @@ export const sitio = {
   telefonoLink: '+50688082952',
   whatsapp: '50688082952',
   whatsappMensaje: 'Hola, necesito una grúa. Mi ubicación es: ',
-  correo: 'Mauportuguezmontoya@gmail.com',
+  correo: 'mauportuguezmontoya@gmail.com',
   base: 'Santiago de Cervantes, Cartago, Costa Rica',
   horario: 'Atención 24/7, los 365 días del año',
   mapaQuery: 'Santiago de Cervantes, Cartago, Costa Rica',
+  // POR CONFIRMAR: dominio final. Se usa en la URL canónica, la vista previa al compartir (og:image),
+  // el sitemap y los datos para Google. Se puede cambiar al compilar con la variable SITE_URL.
+  dominio: 'https://gruasportuguez.netlify.app',
+  // POR CONFIRMAR: coordenadas exactas de la base (copiarlas de la ficha de Google). null = no se publican.
+  geo: null, // ej.: { lat: 9.89, lng: -83.81 }
+  // Enlaces a perfiles (ficha de Google, Facebook…). Se publican en los datos para Google.
+  perfiles: [],
   logoUrl: null, // Logo A por defecto (public/logo). Poner aquí la ruta si el cliente entrega el suyo.
 
   // POR CONFIRMAR: textos finales
@@ -47,9 +54,34 @@ export const galeria = [
   { id: 2, nombre: 'materiales', titulo: 'Materiales en paletas', alt: 'Grúa Portuguez con paletas de material de construcción aseguradas con correas', pos: '58% 50%' },
   { id: 9, nombre: 'noche-nissan', titulo: 'Pickup asegurada con correas', alt: 'Pickup roja asegurada con correas amarillas sobre la plataforma de la grúa, de noche', pos: '62% 50%' },
   { id: 3, nombre: 'noche-suv', titulo: 'Servicio nocturno', alt: 'Grúa Portuguez trasladando una SUV de noche', pos: '40% 50%' },
-  { id: 4, nombre: 'maquinaria', titulo: 'Subiendo un vehículo', alt: 'Un sedán rojo subiendo a la plataforma de la grúa por las rampas', pos: '40% 50%' },
+  { id: 4, nombre: 'sedan-rampa', titulo: 'Subiendo un vehículo', alt: 'Un sedán rojo subiendo a la plataforma de la grúa por las rampas', pos: '40% 50%' },
   { id: 5, nombre: 'sedan-azul', titulo: 'Traslado de carros', alt: 'Grúa Portuguez con un sedán azul en la plataforma, de noche', pos: '25% 50%' },
   { id: 6, nombre: 'sedan-rojo', titulo: 'Vehículos', alt: 'Sedán rojo sobre la plataforma de la grúa', pos: '35% 50%' },
   { id: 7, nombre: 'pickup-choque', titulo: 'Vehículos accidentados', alt: 'Pickup con daños en el frente sobre la plataforma de la grúa', pos: '50% 50%' },
   { id: 8, nombre: 'pickup-noche', titulo: 'Pickups y 4x4', alt: 'Pickup 4x4 trasladada en la plataforma de noche', pos: '50% 50%' },
+]
+
+// POR CONFIRMAR: respuestas basadas en lo que ya dice el sitio. Ajustar con el cliente
+// (por ejemplo, formas de pago o tiempo promedio de llegada).
+export const preguntas = [
+  {
+    p: '¿Cuánto cuesta el servicio de grúa?',
+    r: 'Depende de la distancia y de lo que haya que mover. Llámenos o escríbanos por WhatsApp contándonos qué es y a dónde va, y le damos el precio antes de salir.',
+  },
+  {
+    p: '¿Atienden de noche, fines de semana y feriados?',
+    r: 'Sí. Trabajamos las 24 horas, los 365 días del año, con el mismo servicio de día o de noche.',
+  },
+  {
+    p: '¿Llevan carros que no encienden o que están chocados?',
+    r: 'Sí. Trasladamos carros, pickups y 4x4 funcionando o accidentados, bien asegurados con correas sobre la plataforma.',
+  },
+  {
+    p: '¿Hacen traslados fuera de Cartago?',
+    r: 'Sí. Nuestra base está en Santiago de Cervantes, pero hacemos traslados a cualquier parte del país.',
+  },
+  {
+    p: '¿Qué datos debo tener a mano al llamar?',
+    r: 'Dónde está, qué hay que trasladar (tipo de vehículo o carga) y a dónde lo llevamos. Si está varado, puede enviarnos su ubicación por WhatsApp con un toque.',
+  },
 ]

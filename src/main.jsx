@@ -8,10 +8,14 @@ import '@fontsource/barlow-condensed/latin-700.css'
 import '@fontsource/barlow-condensed/latin-800.css'
 import './index.css'
 
-document.documentElement.classList.add('js')
-
-ReactDOM.createRoot(document.getElementById('root')).render(
+const root = document.getElementById('root')
+const app = (
   <React.StrictMode>
     <App />
   </React.StrictMode>
 )
+
+// En producción el HTML viene pre-renderizado (scripts/prerender.js): React solo lo "activa".
+// En desarrollo el contenedor llega vacío y se renderiza desde cero.
+if (root.firstElementChild) ReactDOM.hydrateRoot(root, app)
+else ReactDOM.createRoot(root).render(app)

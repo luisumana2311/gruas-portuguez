@@ -11,7 +11,7 @@ export default function Servicios() {
             Si tiene algo que mover, cuéntenos qué es y a dónde va. Le decimos cómo lo hacemos.
           </p>
           <div className="mt-6 sm:max-w-xs">
-            <BotonWhatsapp
+            <BotonWhatsapp origen="servicios"
               className="w-full"
               texto="Consultar mi traslado"
               mensaje="Hola, quiero consultar por un traslado. Necesito mover: "
